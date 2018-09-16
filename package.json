@@ -1,0 +1,41 @@
+{
+  "name": "object-style",
+  "version": "1.0.0",
+  "description": "Convert style objects into CSS rules and classNames",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "prepare": "npm run clean && npm run build:cjs && npm run build:esm",
+    "clean": "rm -rf dist",
+    "build:cjs": "NODE_ENV=cjs babel src -d dist",
+    "build:esm": "NODE_ENV=esm babel src -o dist/index.esm.js",
+    "size": "bundlesize",
+    "test": "nyc ava"
+  },
+  "keywords": [],
+  "author": "Brent Jackson",
+  "license": "MIT",
+  "dependencies": {
+    "fnv1a": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "ava": "^1.0.0-beta.8",
+    "bundlesize": "^0.17.0",
+    "nyc": "^13.0.1"
+  },
+  "ava": {
+    "require": [
+      "@babel/register"
+    ]
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/*.js",
+      "maxSize": "0.8 kB"
+    }
+  ]
+}
