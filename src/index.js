@@ -5,11 +5,9 @@ const id = (seed) => 'x' + hash(seed).toString(36)
 const hyphenate = s =>
   s.replace(/[A-Z]|^ms/g, '-$&').toLowerCase()
 
-const toPixel = n => typeof n === 'number' ? n + 'px' : n
-
 const createRule = (className, key, value, children, media) => {
   const selector = '.' + className + children
-  const rule = selector + '{' + hyphenate(key) + ':' + toPixel(value) + '}'
+  const rule = selector + '{' + hyphenate(key) + ':' + value + '}'
   if (!media) return rule
   return media + '{' + rule + '}'
 }

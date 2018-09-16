@@ -35,11 +35,11 @@ test('returns css with a psuedoclass', t => {
   t.regex(a.css, REG)
 })
 
-test('converts numbers to pixels', t => {
+test('does not convert numbers to pixels', t => {
   const a = parse({
-    fontSize: 32
+    lineHeight: 1.5
   })
-  t.regex(a.css, /font-size:32px/)
+  t.regex(a.css, /line-height:1.5/)
 })
 
 test('skips null values', t => {
@@ -60,9 +60,9 @@ test('snapshot', t => {
   const a = parse({
     color: 'magenta',
     backgroundColor: 'cyan',
-    fontSize: 48,
+    fontSize: '48px',
     '@media screen and (min-width:40em)': {
-      fontSize: 64
+      fontSize: '64px'
     },
     '&:hover': {
       color: 'black'
