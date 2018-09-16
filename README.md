@@ -19,9 +19,9 @@ import objectStyle from 'object-style'
 const { className, css } = objectStyle({
   color: 'magenta',
   backgroundColor: 'cyan',
-  fontSize: 48,
+  fontSize: '48px',
   '@media screen and (min-width:40em)': {
-    fontSize: 64
+    fontSize: '64px'
   },
   '&:hover': {
     color: 'black'
