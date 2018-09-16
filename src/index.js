@@ -45,6 +45,7 @@ const parse = (obj, children = '', media) => {
 
   return {
     className: classNames.join(' '),
+    rules,
     css: rules.join('')
   }
 }
