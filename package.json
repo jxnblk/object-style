@@ -1,6 +1,6 @@
 {
   "name": "object-style",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert style objects into CSS rules and classNames",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
