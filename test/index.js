@@ -1,8 +1,20 @@
 import test from 'ava'
 import parse from '../src'
 
+test('throws when not passing styles', t => {
+  t.throws(() => {
+    parse()
+  })
+})
+
+test('throws when passing options as first argument', t => {
+  t.throws(() => {
+    parse({ hash: () => {} })
+  })
+})
+
 test('returns an object with className and css', t => {
-  const { className, css } = parse()
+  const { className, css } = parse({})
   t.is(typeof className, 'string')
   t.is(typeof css, 'string')
 })
@@ -73,5 +85,27 @@ test('snapshot', t => {
       }
     }
   })
+  t.snapshot(a)
+})
+
+test('accepts a custom hashing function', t => {
+  const sanitize = s => s.replace(/[^0-9a-z]/gi, '')
+  const hash = info => 'test_' + Object.values(info).map(sanitize).filter(Boolean).join('-')
+  const a = parse({
+    color: 'magenta',
+    backgroundColor: 'cyan',
+    fontSize: '48px',
+    '@media screen and (min-width:40em)': {
+      fontSize: '64px'
+    },
+    '&:hover': {
+      color: 'black'
+    },
+    '@media screen and (min-width:56em)': {
+      '&:hover': {
+        color: 'navy'
+      }
+    }
+  }, { hash })
   t.snapshot(a)
 })

@@ -34,4 +34,36 @@ const { className, css } = objectStyle({
 })
 ```
 
+## API
+
+```js
+type ObjectStyle = (styles: Object, ?Options) => Result
+```
+
+```js
+type HashFunctionInfo = {
+  // CSS property.
+  property: string,
+  // CSS value.
+  value: string,
+  // Nested selectors.
+  descendants: string,
+  // Media query.
+  media: string,
+}
+// object-style accepts a custom hash function to generate the classNames.
+type HashFunction = (HashFunctionInfo) => string
+
+type Options = { hash?: HashFunction }
+
+type Result = {
+  // The computed classNames, space separated.
+  className: string,
+  // The computed CSS rules as array.
+  rules: Array<string>,
+  // The computed CSS rules as string.
+  css: string,
+}
+```
+
 MIT License
